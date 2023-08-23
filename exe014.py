@@ -1,11 +1,11 @@
 # Loop For
 
-
 for i in range(11):
     print(i)
 
-lista = ['adriano', 'luna', 'roger']
-for i in lista: 
-    print(i*10)
-    for l in i:
-        print(l)
+
+list = ['abóbora', 'trigo', 'sal', 'pimenta']
+for i in list: 
+    print(i*2)
+    for vowel in i:
+        print(vowel)
