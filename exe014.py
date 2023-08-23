@@ -7,3 +7,5 @@ for i in range(11):
 lista = ['adriano', 'luna', 'roger']
 for i in lista: 
     print(i*10)
+    for l in i:
+        print(l)
