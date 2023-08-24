@@ -1,6 +1,8 @@
 import random
+
 alunos = ["Ademir Batschauer Junior",
     "Alex Sandro Rodrigues Mette",
+    "Ana Alice Rodrigues Do Nascimento",
     "Angelo Miguel Requenha",
     "Arthur Henrique Erhardt",
     "Bernardo Martins Fontaina",
@@ -15,6 +17,7 @@ alunos = ["Ademir Batschauer Junior",
     "Isabela Caroline Reiter",
     "Ivanir Stano",
     "Júlia Francine De Oliveira",
+    "Luana Beatriz Nitsche"
     "Marco Aurelio Ribeiro Martins",
     "Matheus Santos Novak",
     "Ryan Wessling Da Silva",

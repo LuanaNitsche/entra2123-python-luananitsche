@@ -2,6 +2,7 @@ const alunos = [
     "Ademir Batschauer Junior",
     "Alex Sandro Rodrigues Mette",
     "Angelo Miguel Requenha",
+    "Ana Alice Rodrigues Do Nascimento",
     "Arthur Henrique Erhardt",
     "Bernardo Martins Fontaina",
     "Bianca Lanser Peres",
@@ -15,6 +16,7 @@ const alunos = [
     "Isabela Caroline Reiter",
     "Ivanir Stano",
     "Júlia Francine De Oliveira",
+    "Luana Beatriz Nitsche",
     "Marco Aurelio Ribeiro Martins",
     "Matheus Santos Novak",
     "Ryan Wessling Da Silva",
@@ -31,7 +33,7 @@ function sortearAlunos() {
         const i = Math.floor(Math.random() * alunos.length);
         const alunoEscolhido = alunos.splice(i, 1)[0];
         const li = document.createElement("li");
-        li.textContent = `Lugar ${alunos.length + 1} - aluno - ${alunoEscolhido}`;
+        li.textContent = `Lugar ${alunos.length + 1} ${alunoEscolhido}`;
         alunoList.appendChild(li);
     }
 }
