@@ -30,5 +30,5 @@ while alunos:
         
         aluno_escolhido = random.choice(alunos) #randomiza a escolha dentro da lista 
         x = alunos.remove(aluno_escolhido)
-        print("Lugar",(i+1), "- aluno -", aluno_escolhido)
+        print("Lugar",(i+1), aluno_escolhido)
     break
