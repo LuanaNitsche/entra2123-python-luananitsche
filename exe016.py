@@ -1,8 +1,10 @@
 
 from num2words import num2words
 num_list = [5]
-for num in range (40, 51):
-    num_in_words = num2words(num)
-    num_list.append(num_in_words)
-print(num_list)
+print(num2words(403871925486174, lang = 'de'))
 print(num2words(405023, lang = 'sl'))
+
+num_list.append(num2words(40, lang = 'pt'))
+num_list.append(num2words(41, lang = 'pt'))
+num_list.append(num2words(42, lang = 'pt'))
+print(num_list)
