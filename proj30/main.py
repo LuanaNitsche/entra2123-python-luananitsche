@@ -7,6 +7,8 @@ while True:
     
     if len(random) >= 8:
         print(random)
+        random = word.get_random_word()
+        print(random)
         break
     else:
         print("A palavra não encontrada.")
