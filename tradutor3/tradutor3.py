@@ -12,7 +12,6 @@ def translate(text, lang):
     return response.json()['text'][0]
 
 def main():
-    # Carregando texto de input.py
     text_to_translate = input.data['text']
 
     translation_en = translate(text_to_translate, 'en')
@@ -27,7 +26,6 @@ def main():
 
     }
 
-    # Imprimindo as traduções
     i = 0
     while i < len(translations):
         print(list(translations.items())[i])
