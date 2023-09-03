@@ -1,4 +1,4 @@
 data = {
-    "text": "O texto que deseja traduzir",
+    "text": "Quero um pão de queijo",
     "langs": ["en", "es", "fr"]
 }
