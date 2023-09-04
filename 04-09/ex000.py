@@ -1,11 +1,11 @@
-from mydefs import entra21, name, calculo
+import mydefs as m
 from env import API_KEY
 
 
 def main():
-    print(name)
-    print(entra21(name))
-    print(calculo(30, 45))
+    print(m.name)
+    print(m.entra21(m.name))
+    print(m.divisao(30, 1))
 
 if __name__ == '__main__':
     main()
