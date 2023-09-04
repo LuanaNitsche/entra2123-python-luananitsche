@@ -9,5 +9,3 @@ def entra21(name):
 def divisao(x, y):
     return print("A divisão entre", str(x), "e", str(y), "é", x / y)
    
-
-
