@@ -7,13 +7,12 @@ def var():
     b = 3.2
     c = 'banana'
 
-#comments
-''' comentario
-    on
-    me'''
+def index(request):
+    return HttpResponse("Links existentes: /m, /list, /nome, /convert")
+
 
 def mensagem(request):
-    return HttpResponse("OLá mundo!")
+    return HttpResponse("Olá Luana!")
 
 
 def nome(request):
