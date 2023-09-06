@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Converter Número</title>
+</head>
+<body>
+    <h1>Converter Número</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Converter</button>
+    </form>
+    
+    {% if numero %}
+    <h2>Resultado:</h2>
+    <p>Você digitou o número: {{ numero }}</p>
+    <p>Tipo de dado: {{ tipo_dado }}</p>
+    {% endif %}
+</body>
+</html>
