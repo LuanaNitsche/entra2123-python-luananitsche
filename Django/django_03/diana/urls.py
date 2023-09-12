@@ -4,7 +4,7 @@ from diana.views import helloworld
 
 
 urlpatterns = [
-    path('hello/', helloworld, name= 'helloworld')
+    path('', helloworld, name= 'helloworld')
     
     #path('index/', index, name = 'index')
 ]
