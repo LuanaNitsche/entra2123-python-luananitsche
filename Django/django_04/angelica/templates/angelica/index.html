@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação 3D</title>
+    <style>
+        body {
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            perspective: 1200px; /* Define a perspectiva da cena 3D */
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #007bff;
+            transform-style: preserve-3d; /* Mantém o estilo 3D ao transformar */
+            transition: transform 0.5s; /* Adiciona transição suave */
+        }
+
+        .container:hover .box {
+            transform: rotateY(180deg); /* Gira a caixa em torno do eixo Y */
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 24px;
+            backface-visibility: hidden; /* Oculta as faces de trás durante a animação */
+        }
+
+        .back {
+            transform: rotateY(180deg); /* Gira a face de trás para trás */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="front">Hello world</div>
+            <div class="back">Brain is melting</div>
+        </div>
+    </div>
+</body>
+</html>
