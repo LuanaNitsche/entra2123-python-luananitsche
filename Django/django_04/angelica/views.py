@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 def helloworld(request):
-    return render(request, 'angelica/index.html')
+    return render(request, 'angelica/hello_world.html')
 
 def index(request):
     context = {
@@ -11,4 +11,4 @@ def index(request):
         'meu_booleano' : True,
         'meu_lista' : [1,2,3,4,5],
     }
-    return render(request, 'angelica/index2.html', context)
+    return render(request, 'angelica/index.html', context)
