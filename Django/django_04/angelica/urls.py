@@ -1,10 +1,9 @@
 from django.contrib import admin
-from django.urls import path, include
-from .views import helloworld, index
-
+from django.urls import path
+from .views import helloworld, ex002
 
 
 urlpatterns = [  
     path('', helloworld, name= 'helloworld'),
-    path('i', index, name= 'index'),
+    path('i', ex002, name= 'index'),
 ]
