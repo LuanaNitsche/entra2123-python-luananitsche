@@ -14,4 +14,4 @@ def helloworld(request):
 #         'number': 100,
 #         'rua': 'rua da praia',
 #     }        
-#     return render(request, 'diana/index.html', abobra)
+#     return render(request, '/diana/index.html', abobra)
