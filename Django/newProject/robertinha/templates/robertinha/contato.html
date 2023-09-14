@@ -1,8 +1,12 @@
 {% extends "robertinha/base.html" %}
-
 {% block content %}
-<h2>Formulário de Contato</h2>
 
+<h1> {{ titulo }} </h1>
+<p>{{ passo }}</p>
+<p> O metodo que veio foi um tipo  {{ metodo }}</p>
+<p> O seu endereco ip é {{ ip_address }}</p>
+
+<h2>Formulário de Contato</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

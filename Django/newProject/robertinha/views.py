@@ -16,34 +16,49 @@ def index(request):
     }
     return render(request, 'robertinha/index.html', context)
 
-def contato(request):
-    if(request.method) == 'POST' :
-        form = ContatoForm(request.POST)
-        if(form.is_valid()):
-            print(form.cleaned_data)
-            assunto = form.cleaned_data['assunto']
-            texto = form.cleaned_data['texto']
-            print(assunto, texto)
-            return redirect('contato')
-    else:
-        form = ContatoForm()
-        
-    return render(request, 'robertinha/contato.html', {'form' : form})
-
-
-def contato2(request):  
+def contato(request):  
     # coletar o endereco IP do client (pessoa que acessado esta view)
     ip_address = request.META.get('REMOTE_ADDR')
 
     if request.method == 'POST':
-        metodo = "*post*"
+        metodo = "*POST*"
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            assunto = form.cleaned_data['assunto']
+            texto = form.cleaned_data['texto']
+            email = form.cleaned_data['email']
+            idade = int(form.cleaned_data['idade'])
+            print(assunto, texto, email, qualquer(idade))
+        
+
     else:
-        metodo = "*get*"
+        metodo = "*GET*"
+        form = ContatoForm()
 
     context = { 
         'titulo' : 'historia do passos',
         'passo' : 'passo 1',
         'metodo' : metodo,
-        'ip_address' : ip_address
+        'ip_address' : ip_address,
+        'form' : form,
     }
-    return render(request, 'robertinha/contato2.html', context)
+    
+    return render(request, 'robertinha/contato.html', context)
+
+
+# def contato2(request):  
+#     # coletar o endereco IP do client (pessoa que acessado esta view)
+#     ip_address = request.META.get('REMOTE_ADDR')
+
+#     if request.method == 'POST':
+#         metodo = "*post*"
+#     else:
+#         metodo = "*get*"
+
+#     context = { 
+#         'titulo' : 'historia do passos',
+#         'passo' : 'passo 1',
+#         'metodo' : metodo,
+#         'ip_address' : ip_address
+#     }
+#     return render(request, 'robertinha/contato2.html', context)
