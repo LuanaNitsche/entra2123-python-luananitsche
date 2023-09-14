@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .forms import ContatoForm
 
-# Create your views here.
-def index(request):
+
+def ex002(request):
     context = {
         'minha_string' : 'Olá mundo',
         'meu_inteiro' : 123,
@@ -14,7 +14,8 @@ def index(request):
         'meu_arquivo_html' : 'angelica/ex002.html',
         'meu_arquivo_css' : 'angelica/ex002.css',
     }
-    return render(request, 'robertinha/index.html', context)
+    return render(request, 'robertinha/ex002.html', context)
+
 
 def contato(request):  
     # coletar o endereco IP do client (pessoa que acessado esta view)
@@ -44,6 +45,14 @@ def contato(request):
     }
     
     return render(request, 'robertinha/contato.html', context)
+
+
+def index(request):    
+    return render(request, 'robertinha/index.html')
+
+
+
+
 
 
 # def contato2(request):  

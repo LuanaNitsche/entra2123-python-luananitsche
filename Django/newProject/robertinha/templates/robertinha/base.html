@@ -9,6 +9,9 @@
     <header>
         <h1>Bem-vindo ao Meu Sistema</h1>
     </header>
+    {% block navbar %}
+       {% include 'robertinha/nav.html' %}
+    {% endblock %}
 
     <main>
         {% block content %}

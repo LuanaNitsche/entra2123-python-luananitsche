@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from .views import index, contato, contato2
+from .views import contato, ex002, index
 
 urlpatterns = [
-    path('', index, name= 'index.html'),
+    path('ex002', ex002, name= 'ex002'),
     path('contato/', contato, name= 'contato'),
-    path('c', contato2, name= 'c2')
+    path('', index, name= 'index')
     
 ]
