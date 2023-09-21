@@ -7,14 +7,20 @@
             <a href="/ex002">Ex002</a>
         </li>
         <li>
-            <a href="/contato">Meu primeiro form Contato</a>
+            <a href="{% url 'robertinha:contato' %}">Contato</a>
         </li>
         <li>
             <a href="/bea">Index Beatrice</a>
             <br>
-
+            <a href="{% url 'beatrice:index_beatrice' %}">Index Bea com url automatica</a>
         </li>
-        
+				<ul>
+        <li>
+            <a href="/beatrice/ex001">ex001</a>
+            <br>
+            <a href="{% url 'beatrice:ex001_beatrice' %}">ex001</a>
+        </li>
+			</ul>        
     </ul>
     
 </nav>
