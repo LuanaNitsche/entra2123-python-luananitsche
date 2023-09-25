@@ -1,11 +1,24 @@
 from django.shortcuts import render
 from beatrice.forms import Ex001Form
+import ast
 
 # Create your views here.
-def qualquer (texto, valor):
+def qualquera (texto, valor):
     resultado = texto * valor
     return resultado
 
+def qualquerb(texto):
+    lista = ast.literal_eval(texto)
+    print("LISTA")
+    print(lista)
+    return lista[2]
+
+def qualquer(texto):
+    lista = ast.literal_eval(texto)
+    print("LISTA")
+    ultimo = lista[-2:]
+    return ultimo
+    
 
 def index(request):
     return render(request, 'beatrice/index.html')
@@ -26,7 +39,7 @@ def ex001(request):
             texto = form.cleaned_data['texto']            
             valor = int(form.cleaned_data['valor'])
             print(texto, valor)
-            resultado = qualquer(texto, valor)    
+            resultado = qualquer(texto)    
     else:
         print("passou aqui 004")
         metodo = "*GET*"
