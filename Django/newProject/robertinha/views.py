@@ -17,6 +17,25 @@ def ex002(request):
     return render(request, 'robertinha/ex002.html', context)
 
 
+from django.shortcuts import render
+from robertinha.forms import ContatoForm
+
+
+def qualquer(x):
+    return x * 2
+
+def index(request):
+    #return HttpResponse("hello world")
+    return render(request, 'robertinha/index.html')
+
+def ex002(request):
+    context = {
+        'minha_string': 'Olá, Mundo!',
+        'meu_inteiro': 123,
+        'meu_booleano': True
+    }
+    return render(request, 'robertinha/ex002.html', context)
+
 def contato(request):  
     # coletar o endereco IP do client (pessoa que acessado esta view)
     ip_address = request.META.get('REMOTE_ADDR')

@@ -1,6 +1,11 @@
 from django.shortcuts import render
+from beatrice.forms import Ex001Form
 
 # Create your views here.
+def qualquer (texto, valor):
+    resultado = texto * valor
+    return resultado
+
 
 def index(request):
     return render(request, 'beatrice/index.html')
@@ -10,6 +15,7 @@ def ex001(request):
     # coletar o endereco IP do client (pessoa que acessado esta view)
     ip_address = request.META.get('REMOTE_ADDR')
     resultado = '<br>vazio<br>'
+    metodo = ""
 
     if request.method == 'POST':
         print("passou aqui 002")
@@ -20,8 +26,7 @@ def ex001(request):
             texto = form.cleaned_data['texto']            
             valor = int(form.cleaned_data['valor'])
             print(texto, valor)
-            resultado = qualquer(texto)
-
+            resultado = qualquer(texto, valor)    
     else:
         print("passou aqui 004")
         metodo = "*GET*"
@@ -37,6 +42,7 @@ def ex001(request):
         'metodo' : metodo,
         'ip_address' : ip_address,
         'form' : form,
+        
     }
     print("passou aqui 006")
     return render(request, 'beatrice/ex001.html', context)
