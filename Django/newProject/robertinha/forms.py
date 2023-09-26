@@ -1,5 +1,6 @@
 from django import forms
 
+
 class ContatoForm(forms.Form):
     assunto = forms.CharField(label='Assunto', max_length=100)
     texto = forms.CharField(label='Texto', widget=forms.Textarea)
@@ -19,3 +20,11 @@ class Ex003Form(forms.Form):
 
     pergunta = forms.CharField(disabled=True, label="Pergunta", required=False)
     resposta = forms.ChoiceField(choices=PERGUNTA_CHOICES, label= "Resposta", required=False)
+
+
+
+
+class QuestionForm(forms.Form):
+    pergunta = forms.CharField(disabled=True, label='Perguntas', required=False)
+    
+

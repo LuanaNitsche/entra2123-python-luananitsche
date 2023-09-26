@@ -1,0 +1,12 @@
+{% extends "robertinha/base.html" %}
+{% block content %}
+
+<h2>Formulário de Perguntas</h2>
+<p> Perguntas {{ questions }}</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar</button>
+</form>
+
+{% endblock %}

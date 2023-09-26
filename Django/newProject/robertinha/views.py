@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .forms import ContatoForm, Ex003Form
+from .forms import ContatoForm, Ex003Form, QuestionForm
 
 
 def ex002(request):
@@ -81,7 +81,7 @@ def ex003(request):
     msg = ""
 
     if request.method == 'POST':
-        form = Ex003Form(request.POST, initial={'pergunta': 'Qual é a capital da França?'})
+        form = Ex003Form(request.POST, initial={'pergunta': 'Qual é a capital da França?'}) #para não sumir a pergunta durante o post
         if form.is_valid():
             resposta = form.cleaned_data['resposta']
             if resposta == 'A': 
@@ -124,3 +124,31 @@ def ex003(request):
 #         'ip_address' : ip_address
 #     }
 #     return render(request, 'robertinha/contato2.html', context)
+
+def ex004(request):
+    questions = {
+    '1': {
+        'Q': 'Qual a capital da França?',
+        'A': 'Blumenau',
+        'B': 'Brusque',
+        'C': 'Floripa',
+        'D': 'Paris',
+        'R': 'D'
+    }
+}
+
+    if request.method == 'POST':
+        form = QuestionForm(questions, request.POST)
+        if form.is_valid():
+            pergunta = form.cleaned_data['Q']
+            results = form.cleaned_data  # Get user's answers
+            return render(request, 'robertinha/results.html', {'results': results})
+    else:
+        form = QuestionForm(questions)
+
+    context = {
+        'form': form,
+        'questions': questions,
+    }
+
+    return render(request, 'robertinha/ex004.html', context)
