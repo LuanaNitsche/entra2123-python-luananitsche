@@ -41,7 +41,7 @@ def ex001(request):
         if form.is_valid():   
             print("passou aqui 003")         
             texto = form.cleaned_data['texto']            
-            valor = int(form.cleaned_data['valor'])
+            #valor = int(form.cleaned_data['valor'])
             inicio = int(form.cleaned_data['inicio'])
             fim = int(form.cleaned_data['fim'])
             resultado = qualquer(texto, inicio, fim)    
