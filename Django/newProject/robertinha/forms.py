@@ -35,7 +35,8 @@ class QuestionForm(forms.Form):
                     ('C', question['C']),
                     ('D', question['D']),
                 ],
-                widget=forms.RadioSelect(attrs={'class': 'radio-inline'})
+                widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
+                required=False
             )
 
 # class QuestionForm(forms.Form):

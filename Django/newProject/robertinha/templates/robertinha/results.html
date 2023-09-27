@@ -1,14 +1,48 @@
 {% extends "robertinha/base.html" %}
+
 {% block content %}
+  <div class="container">
+    <h1 class="text-center">Sua Pontuação</h1>
+    <div class="score-info">
+      <p>Pontos: <span id="pontuacao">{{ pontuacao }}</span></p>
+      <p>Suas respostas: <span id="respostas">{{ respostas }}</span></p>
+      <p>Alternativas corretas: <span id="acertos">{{ acertos }}</span></p>
+      <p>Tamanho dicionário: {{ acesso }}</p>
+    </div>
 
-<p> Pontos: {{ pontuacao }} </p>
-<p> Respostas: {{ respostas}}</p>
-<p> Acertos: {{ acertos }}</p>
+    <form method="post" id="score-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Voltar</button>
+    </form>
+  </div>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Enviar</button>
-</form>
+  <style>
+    /* Adicione estilos personalizados aqui */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f4f4f4;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
 
+    h1 {
+      color: #333;
+    }
+
+    .score-info {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .score-info p {
+      margin: 10px 0;
+    }
+
+    button.btn-primary {
+      margin-top: 20px;
+    }
+  </style>
 {% endblock %}

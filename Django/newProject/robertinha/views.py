@@ -208,6 +208,7 @@ def ex004(request):
 		        'R': 'C'
 		    }
 		}
+    acesso = len(dicionario)
 #print(dicionario)
     if request.method == 'POST':
         form = QuestionForm(dicionario, request.POST)
@@ -223,8 +224,10 @@ def ex004(request):
                 'respostas': respostas,
                 'acertos': acertos,
                 'pontuacao': pontuacao,
+                'acesso' : acesso
+                
             }
-            
+
             return render(request, 'robertinha/results.html', context) # quando for requisitado para postar
     else:
         form = QuestionForm(dicionario)
