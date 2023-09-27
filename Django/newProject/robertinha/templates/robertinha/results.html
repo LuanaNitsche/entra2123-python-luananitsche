@@ -1,7 +1,10 @@
 {% extends "robertinha/base.html" %}
 {% block content %}
 
-<h2>Formulário de Pergunta</h2>
+<p> Pontos: {{ pontuacao }} </p>
+<p> Respostas: {{ respostas}}</p>
+<p> Acertos: {{ acertos }}</p>
+
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

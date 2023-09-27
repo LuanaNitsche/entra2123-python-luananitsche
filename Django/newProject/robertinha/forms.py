@@ -22,9 +22,23 @@ class Ex003Form(forms.Form):
     resposta = forms.ChoiceField(choices=PERGUNTA_CHOICES, label= "Resposta", required=False)
 
 
-
-
 class QuestionForm(forms.Form):
-    pergunta = forms.CharField(disabled=True, label='Perguntas', required=False)
+    def __init__(self, questions, *args, **kwargs):
+        super(QuestionForm, self).__init__(*args, **kwargs)
+        
+        for key, question in questions.items():
+            self.fields[key] = forms.ChoiceField(
+                label=question['Q'],
+                choices=[
+                    ('A', question['A']),
+                    ('B', question['B']),
+                    ('C', question['C']),
+                    ('D', question['D']),
+                ],
+                widget=forms.RadioSelect(attrs={'class': 'radio-inline'})
+            )
+
+# class QuestionForm(forms.Form):
+#     respostas = forms.CharField(disabled=False, label='Resposta', required=True, widget=forms.TextInput)
     
 
