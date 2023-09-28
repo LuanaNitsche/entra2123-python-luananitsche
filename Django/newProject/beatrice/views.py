@@ -64,3 +64,4 @@ def ex001(request):
     }
     print("passou aqui 006")
     return render(request, 'beatrice/ex001.html', context)
+

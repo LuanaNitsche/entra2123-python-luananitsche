@@ -101,30 +101,6 @@ def ex003(request):
 
     return render(request, 'robertinha/ex003.html', context)
 
-# def contato2(request):  
-#     # coletar o endereco IP do client (pessoa que acessado esta view)
-#     ip_address = request.META.get('REMOTE_ADDR')
-
-#     if request.method == 'POST':
-#         metodo = "*post*"
-#     else:
-#         metodo = "*get*"
-#         initial_data = {                    #Lista que define e coloca dentro das caixas de texto,  
-#             'assunto': 'Tópico Padrão',         #uma mensagem inicial
-#             'texto': 'Texto Padrão',
-#             'email': 'email@exemplo.com',
-#             'idade': 30,
-#         }
-#         form = ContatoForm(initial=initial_data) 
-
-#     context = { 
-#         'titulo' : 'historia do passos',
-#         'passo' : 'passo 1',
-#         'metodo' : metodo,
-#         'ip_address' : ip_address
-#     }
-#     return render(request, 'robertinha/contato2.html', context)
-
 def ex004(request):
     dicionario = {
 		    '1': {
@@ -209,7 +185,7 @@ def ex004(request):
 		    }
 		}
     acesso = len(dicionario)
-#print(dicionario)
+
     if request.method == 'POST':
         form = QuestionForm(dicionario, request.POST)
         if form.is_valid():
@@ -239,71 +215,99 @@ def ex004(request):
 
     return render(request, 'robertinha/ex004.html', context) #quando é requisitado apenas leitura
 
-    # for chave in dicionario.keys():               #percorre apenas as chaves
-    #     print(chave)
+  
+def ex005(request):
+    pessoas = {
+        1: {'nome': 'Lucas Ferrari', 'cep': '89000'},
+        2: {'nome': 'Rafaela Weiss', 'cep': '89010'},
+        3: {'nome': 'Ana Rossi', 'cep': '89020'},
+        4: {'nome': 'Carlos Müller', 'cep': '89030'},
+        5: {'nome': 'Fernanda Schmidt', 'cep': '89040'},
+        6: {'nome': 'Gabriela Bianchi', 'cep': '89050'},
+        7: {'nome': 'Rodrigo Meier', 'cep': '89060'},
+        8: {'nome': 'Isabela Romano', 'cep': '89070'},
+        9: {'nome': 'Mateus Klein', 'cep': '89080'},
+        10: {'nome': 'Juliana Martini', 'cep': '89090'},
+    }
+
+    cidades = {
+        '89000': {'nome': 'Gaspar', 'estado': 'SC'},
+        '89010': {'nome': 'Ilhota', 'estado': 'SC'},
+        '89020': {'nome': 'Rodeio', 'estado': 'SC'},
+        '89030': {'nome': 'Ascurra', 'estado': 'SC'},
+        '89040': {'nome': 'Blumenau', 'estado': 'SC'},
+        '89050': {'nome': 'Indaial', 'estado': 'SC'},
+        '89060': {'nome': 'Timbó', 'estado': 'SC'},
+        '89070': {'nome': 'Pomerode', 'estado': 'SC'},
+        '89080': {'nome': 'Brusque', 'estado': 'SC'},
+        '89090': {'nome': 'Guabiruba', 'estado': 'SC'},
+    }
+
+    pessoas_com_cidades = {}
+
+    for id_pessoa, info in pessoas.items():
+        cep = info['cep']
+        cidade_info = cidades.get(cep, "Cidade não encontrada")
         
-    # for x in dicionario.values():          #percorre apenas os valores
-    #     print(x)   
+        if cidade_info != "Cidade não encontrada":
+            pessoas_com_cidades[id_pessoa] = {
+                'nome': info['nome'],
+                'cidade': cidade_info['nome'],
+                'estado': cidade_info['estado']
+            }
+        else:
+            pessoas_com_cidades[id_pessoa] = {
+                'nome': info['nome'],
+                'cidade': 'Desconhecida',
+                'estado': 'Desconhecido'
+            }
+
+    print(pessoas_com_cidades)
+    return render(request, 'robertinha/ex005.html')
+  
+  
+def mercado(request):
+    if request.method == 'POST':
+        pass
+    else:
+        produtos ={
+            '1':{'nome':'Arroz','id_for' : '11','id_cat' : '202'},
+            '2':{'nome':'Papel higiênico','id_for' : '22','id_cat' : '404'},        
+            '3':{'nome':'MI9','id_for' : '33','id_cat' : '505'}
+        }
+        
+        fornecedores = {
+            '11' : {'nome' : 'Alimentos do Sul'},
+            '22' : {'nome' : 'Neve'},
+            '33' : {'nome' : 'Xiaomi'}
+        }
+        
+        categoria = {
+            '202' : {'nome' : 'Alimentos'},
+            '404' : {'nome' : 'Produtos de higiene'},
+            '505' : {'nome' : 'Eletrônicos'}
+        }
+        
+        novoDic = {}
     
-    # for x in dicionario.values():      #percorre valores e opcoes de resposta
-    #     for y in x.values():
-    #         print(y)
+        for id_produtos, info in produtos.items(): ##id_produtos = chave, info = dic de info de produto
+            id_for = info['id_for']                ##pega id do fornecedor
+            id_cat = info['id_cat']                ##pega id da categoria
+            
+            nome_prod = info['nome']               ##pega o nome do produto a partir da info
+            nome_for = fornecedores.get(id_for, {}).get('nome', 'Desconhecida')     #pega o nome do fornecedor com base na id dele
+            nome_cat = categoria.get(id_cat, {}).get('nome', 'Desconhecida')        #pega o nome da categoria com base na id dela
+
+            novoDic[id_produtos] = {               #popula o novo dicionario que junta todas as informações
+                'nome_produto' : nome_prod,        #associa a chave (nome_produto) ao nome no dicionario (nome_prod)
+                'nome_fornecedor' : nome_for,      #faz o mesmo com fornecedor e categoria
+                'nome_categoria' : nome_cat
+            }
+        
+        print(novoDic)   
     
-
-
-
-
-
-
-
-
-
-
-
-
-# question_number = request.GET.get('question_number')
-# return render(request, 'robertinha/ex004.html', {'quest': questions, 'question_number': question_number})
-  
-#   if request.method == 'POST':
-#         form = QuestionForm(questions, request.POST)
-#         if form.is_valid():
-#             pergunta = form.cleaned_data['Q']
-#             results = form.cleaned_data  # Get user's answers
-#             return render(request, 'robertinha/results.html', {'results': results})
-#     else:
-#         form = QuestionForm(questions)
-
-#     context = {
-#         'form': form,
-#         'questions': questions,
-#     }
+        return render(request, 'robertinha/ex006.html', {'novoDic': novoDic})
   
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    # if request.method == 'POST':
-    #     form = QuestionForm(questions, request.POST)
-    #     if form.is_valid():
-    #         pergunta = form.cleaned_data['Q']
-    #         results = form.cleaned_data  # Get user's answers
-    #         return render(request, 'robertinha/results.html', {'results': results})
-    # else:
-    #     form = QuestionForm(questions)
-
-    # context = {
-    #     'form': form,
-    #     'questions': questions,
-    # }
-
-    # return render(request, 'robertinha/ex004.html', context)

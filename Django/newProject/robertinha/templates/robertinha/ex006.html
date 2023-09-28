@@ -1,0 +1,22 @@
+{% extends "robertinha/base.html" %}
+{% block content %}
+
+<h2> Novo dicionário </h2>
+<table border="1">
+    <tr>
+        <th>ID Produto</th>
+        <th>Nome do Produto</th>
+        <th>Nome do Fornecedor</th>
+        <th>Nome da Categoria</th>
+    </tr>
+    {% for id_produto, produto_info in novoDic.items %}
+    <tr>
+        <td>{{ id_produto }}</td>
+        <td>{{ produto_info.nome_produto }}</td>
+        <td>{{ produto_info.nome_fornecedor }}</td>
+        <td>{{ produto_info.nome_categoria }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
