@@ -1,8 +1,38 @@
 {% extends "robertinha/base.html" %}
 {% block content %}
+<style>
+    h2 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
 
-<h2> Novo dicionário </h2>
-<table border="1">
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+</style>
+
+<h2>Novo dicionário</h2>
+<table>
     <tr>
         <th>ID Produto</th>
         <th>Nome do Produto</th>
@@ -10,7 +40,6 @@
         <th>Nome da Categoria</th>
         <th>Localização</th>
         <th>Saldo em estoque</th>
-
     </tr>
     {% for id_produto, produto_info in novoDic.items %}
     <tr>
@@ -20,9 +49,9 @@
         <td>{{ produto_info.Categoria }}</td>
         <td>{{ produto_info.Localização}}</td>
         <td>{{ produto_info.Saldo}}</td>
-
     </tr>
     {% endfor %}
 </table>
 
 {% endblock %}
+

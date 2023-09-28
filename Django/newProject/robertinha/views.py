@@ -248,7 +248,7 @@ def ex005(request):
     for id_pessoa, info in pessoas.items():
         cep = info['cep']
         cidade_info = cidades.get(cep, "Cidade não encontrada")
-        
+
         if cidade_info != "Cidade não encontrada":
             pessoas_com_cidades[id_pessoa] = {
                 'nome': info['nome'],
@@ -262,8 +262,8 @@ def ex005(request):
                 'estado': 'Desconhecido'
             }
 
-    print(pessoas_com_cidades)
-    return render(request, 'robertinha/ex005.html')
+    return render(request, 'robertinha/ex005.html', {'pessoas_com_cidades': pessoas_com_cidades})
+
   
   
 def mercado(request):
@@ -314,7 +314,7 @@ def mercado(request):
                 'Saldo' : local['saldo']
             }
         
-        print(novoDic)   
+        #print(novoDic)   
     
         return render(request, 'robertinha/ex006.html', {'novoDic': novoDic})
   
