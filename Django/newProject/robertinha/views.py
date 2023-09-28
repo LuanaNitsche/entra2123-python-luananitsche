@@ -271,9 +271,9 @@ def mercado(request):
         pass
     else:
         produtos ={
-            '1':{'nome':'Arroz','id_for' : '11','id_cat' : '202'},
-            '2':{'nome':'Papel higiênico','id_for' : '22','id_cat' : '404'},        
-            '3':{'nome':'MI9','id_for' : '33','id_cat' : '505'}
+            '1':{'nome':'Arroz','id_for' : '11','id_cat' : '202', 'id_estoque' : '02'},
+            '2':{'nome':'Papel higiênico','id_for' : '22','id_cat' : '404', 'id_estoque' : '01'},        
+            '3':{'nome':'MI9','id_for' : '33','id_cat' : '505', 'id_estoque' : '03'}
         }
         
         fornecedores = {
@@ -288,20 +288,30 @@ def mercado(request):
             '505' : {'nome' : 'Eletrônicos'}
         }
         
+        estoque = {
+            '01' : {'localizacao' : 'Prateleira A1', 'saldo' : '2'},
+            '02' : {'localizacao' : 'Prateleira A5', 'saldo' : '0'},
+            '03' : {'localizacao' : 'Prateleira D2', 'saldo' : '10'}
+        }
+        
         novoDic = {}
     
         for id_produtos, info in produtos.items(): ##id_produtos = chave, info = dic de info de produto
             id_for = info['id_for']                ##pega id do fornecedor
             id_cat = info['id_cat']                ##pega id da categoria
+            id_estoque = info ['id_estoque']
+            
             
             nome_prod = info['nome']               ##pega o nome do produto a partir da info
             nome_for = fornecedores.get(id_for, {}).get('nome', 'Desconhecida')     #pega o nome do fornecedor com base na id dele
             nome_cat = categoria.get(id_cat, {}).get('nome', 'Desconhecida')        #pega o nome da categoria com base na id dela
-
+            local = estoque.get(id_estoque, {'localizacao' : 'Desconhecida', 'saldo' : '0'})
             novoDic[id_produtos] = {               #popula o novo dicionario que junta todas as informações
-                'nome_produto' : nome_prod,        #associa a chave (nome_produto) ao nome no dicionario (nome_prod)
-                'nome_fornecedor' : nome_for,      #faz o mesmo com fornecedor e categoria
-                'nome_categoria' : nome_cat
+                'Produto' : nome_prod,        #associa a chave (nome_produto) ao nome no dicionario (nome_prod)
+                'Fornecedor' : nome_for,      #faz o mesmo com fornecedor e categoria
+                'Categoria' : nome_cat,
+                'Localização' : local['localizacao'],
+                'Saldo' : local['saldo']
             }
         
         print(novoDic)   

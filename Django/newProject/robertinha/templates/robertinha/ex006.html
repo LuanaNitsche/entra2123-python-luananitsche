@@ -8,13 +8,19 @@
         <th>Nome do Produto</th>
         <th>Nome do Fornecedor</th>
         <th>Nome da Categoria</th>
+        <th>Localização</th>
+        <th>Saldo em estoque</th>
+
     </tr>
     {% for id_produto, produto_info in novoDic.items %}
     <tr>
         <td>{{ id_produto }}</td>
-        <td>{{ produto_info.nome_produto }}</td>
-        <td>{{ produto_info.nome_fornecedor }}</td>
-        <td>{{ produto_info.nome_categoria }}</td>
+        <td>{{ produto_info.Produto }}</td>
+        <td>{{ produto_info.Fornecedor }}</td>
+        <td>{{ produto_info.Categoria }}</td>
+        <td>{{ produto_info.Localização}}</td>
+        <td>{{ produto_info.Saldo}}</td>
+
     </tr>
     {% endfor %}
 </table>
