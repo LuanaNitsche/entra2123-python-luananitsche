@@ -1,13 +1,53 @@
 {% extends "robertinha/base.html" %}
 {% block content %}
 
-<p> Mensagem: {{ msg }}</p>
+<style>
+    /* Estilos CSS personalizados para o formulário e a página */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
 
-<h2>Formulário de Pergunta</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Enviar</button>
-</form>
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    button[type="submit"] {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="container">
+    <p>Mensagem: {{ msg }}</p>
+
+    <h2>Formulário de Pergunta</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+    </form>
+</div>
 
 {% endblock %}

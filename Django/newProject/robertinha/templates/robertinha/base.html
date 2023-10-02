@@ -4,7 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Sistema</title>
-    
+    <style>
+        /* Estilos CSS personalizados para o seu sistema */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0; /* Reduzi a altura da faixa de copyright para 5px */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        main {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 20px 0; /* Removi a margem superior para acomodar a faixa de copyright */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -19,7 +56,6 @@
         <!-- O conteúdo específico de cada página será inserido aqui -->
         {% endblock %}
     </main>
-
 
     <footer>
         <p>Copyright © 2023</p>

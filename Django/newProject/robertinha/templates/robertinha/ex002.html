@@ -1,15 +1,43 @@
 {% extends "robertinha/base.html" %}
-
 {% block content %}
-<h2>Dados enviados da View</h2>
 
-<p>String: {{ minha_string }}</p>
-<p>Inteiro: {{ meu_inteiro }}</p>
-<p>Booleano: {{ meu_booleano }}</p>
-<p>Dicionario: {{meu_dicionario}}</p>
-<p>Objeto: {{meu_objeto}}</p>
-<p>Arquivo: {{meu_arquivo}}</p>
-<p>Html: {{meu_arquivo_html}}</p>
-<p>CSS: {{meu_arquivo_css}}</p>
+<style>
+    /* Estilos CSS personalizados para a página */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="container">
+    <h2>Dados enviados da View</h2>
+
+    <p>String: {{ minha_string }}</p>
+    <p>Inteiro: {{ meu_inteiro }}</p>
+    <p>Booleano: {{ meu_booleano }}</p>
+    <p>Dicionario: {{ meu_dicionario }}</p>
+    <p>Objeto: {{ meu_objeto }}</p>
+    <p>Arquivo: {{ meu_arquivo }}</p>
+    <p>Html: {{ meu_arquivo_html }}</p>
+    <p>CSS: {{ meu_arquivo_css }}</p>
+</div>
 
 {% endblock %}

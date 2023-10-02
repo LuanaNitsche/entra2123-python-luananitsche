@@ -40,6 +40,9 @@
         <th>Nome da Categoria</th>
         <th>Localização</th>
         <th>Saldo em estoque</th>
+        <th>Data de validade</th>
+        <th>Dias Vencidos</th>
+        <th>Média dias vencidos</th>
     </tr>
     {% for id_produto, produto_info in novoDic.items %}
     <tr>
@@ -49,6 +52,9 @@
         <td>{{ produto_info.Categoria }}</td>
         <td>{{ produto_info.Localização}}</td>
         <td>{{ produto_info.Saldo}}</td>
+        <td>{{ produto_info.DataValidade }}</td>
+        <td>{{ produto_info.Vencimento}}</td>
+        <td>{{ media_dias_vencidos }}</td>
     </tr>
     {% endfor %}
 </table>
