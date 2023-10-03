@@ -1,0 +1,35 @@
+{% extends "robertinha/base.html" %}
+
+{% block content %}
+<h2>Lista de Compras</h2>
+<table>
+    <tr>
+        <th>ID Produto</th>
+        <th>Nome do Produto</th>
+        <th>Quantidade do Produto</th>
+        <th>Ação</th>
+    </tr>
+    {% for id_produto, info in lista_de_compras.items %}
+    <tr>
+        <td>{{ id_produto }}</td>
+        <td>{{ info.nome }}</td>
+        <td>{{ info.qnt }}</td>
+        <td>
+            <form method="post" action="{% url 'robertinha:ex007_remove' id_produto=id_produto %}">
+                {% csrf_token %}
+                <button type="submit">Excluir</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h1> </h1>
+<form method="post" action="{% url 'robertinha:ex007_add' %}">
+    {% csrf_token %}
+    {{ form.id_produto.label_tag }} {{ form.id_produto }}
+    {{ form.nome_produto.label_tag }} {{ form.nome_produto }}
+    {{ form.qnt_produto.label_tag }} {{ form.qnt_produto }}
+    <button type="submit">Adicionar</button>
+</form>
+{% endblock %}

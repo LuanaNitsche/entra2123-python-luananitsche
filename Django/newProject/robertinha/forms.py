@@ -42,4 +42,9 @@ class QuestionForm(forms.Form):
 # class QuestionForm(forms.Form):
 #     respostas = forms.CharField(disabled=False, label='Resposta', required=True, widget=forms.TextInput)
     
+class Ex007Form(forms.Form):
+    id_produto = forms.CharField(widget=forms.HiddenInput(), required=False)
+    nome_produto = forms.CharField()
+    qnt_produto = forms.CharField()
+
 

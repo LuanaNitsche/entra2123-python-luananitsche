@@ -1,7 +1,7 @@
-from django.shortcuts import render, HttpResponse
-from .forms import ContatoForm, Ex003Form, QuestionForm
+from django.shortcuts import render, HttpResponse, redirect
+from .forms import ContatoForm, Ex003Form, QuestionForm, Ex007Form
 from datetime import datetime
-import locale
+from .compras import compras
 
 def ex002(request):
     context = {
@@ -37,6 +37,7 @@ def ex002(request):
 def contato(request):  
     # coletar o endereco IP do client (pessoa que acessado esta view)
     ip_address = request.META.get('REMOTE_ADDR')
+    assunto = ""
 
     if request.method == 'POST':
         metodo = "*POST*"
@@ -62,12 +63,12 @@ def contato(request):
         form = ContatoForm(initial=initial_data) 
 
     context = { 
-        'titulo' : 'historia do passos',
-        'passo' : 'passo 1',
+        'titulo' : 'História do passos',
+        'passo' : 'Passo 1',
         'metodo' : metodo,
         'ip_address' : ip_address,
         'form' : form,
-        #'resposta' : assunto
+        'resposta' : assunto
     }
     
     return render(request, 'robertinha/contato.html', context)
@@ -276,8 +277,8 @@ def mercado(request):
                  'id_for' : '11',
                  'id_cat' : '202', 
                  'id_estoque' : '02', 
-                 'id_vcto' : datetime(2022, 10, 5), 
-                 'dias_vencidos' : calculo_vencimento(datetime(2022, 10, 5))},
+                 'id_vcto' : datetime(2022, 10, 5),                                 #usando a biblioteca datetime para definir uma data de validade
+                 'dias_vencidos' : calculo_vencimento(datetime(2022, 10, 5))},      #implementando a funcao de calculo para vencimento
 
             '2':{'nome':'Papel higiênico',
                  'id_for' : '22',
@@ -367,12 +368,60 @@ def calculo_vencimento(id_vcto):
     return dias_vencidos
 
 
-
 def formatar_data_brasileira(data):
-    if data is None:
+    if data is None:                    #se nao tem data, nao formata
         return ""
-    return data.strftime("%d/%m/%Y")
+    return data.strftime("%d/%m/%Y")    #formata no formato d/m/y (brasileiro)
 
 
 
-  
+
+def ex007(request):
+    if request.method == 'POST':
+        form = Ex007Form(request.POST)
+
+        if form.is_valid():
+            id_produto = form.cleaned_data['id_produto']
+            nome_produto = form.cleaned_data['nome_produto']
+            qnt_produto = form.cleaned_data['qnt_produto']
+
+            compras[id_produto] = {'nome': nome_produto, 'qnt': qnt_produto}
+
+    else:
+        form = Ex007Form()
+    
+    context = {
+    'lista_de_compras': compras, 
+    'form': form   
+    }
+    
+    return render(request, 'robertinha/ex007.html', context )
+
+
+def ex007_add(request):
+    if request.method == 'POST':
+        form = Ex007Form(request.POST)
+        if form.is_valid():
+            nome_produto = form.cleaned_data['nome_produto']
+            qnt_produto = form.cleaned_data['qnt_produto']
+
+            proximo_id = str(len(compras) + 1)
+
+            compras[proximo_id] = {'nome': nome_produto, 'qnt': qnt_produto}
+
+            return redirect('robertinha:ex007')
+
+    else:
+        proximo_id = str(len(compras) + 1)
+        form = Ex007Form(initial={'id_produto': proximo_id})
+
+    return render(request, 'robertinha/ex007_add.html', {'form': form})
+
+
+
+def ex007_remove(request, id_produto):
+    if request.method == 'POST':
+        if id_produto in compras:
+            print (compras[id_produto])
+            del compras[id_produto]
+    return redirect('robertinha:ex007')
