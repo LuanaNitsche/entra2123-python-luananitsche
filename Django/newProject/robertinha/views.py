@@ -377,25 +377,29 @@ def formatar_data_brasileira(data):
 
 
 def ex007(request):
-    if request.method == 'POST':
-        form = Ex007Form(request.POST)
+    if request.method == 'POST':                                                #se request é post
+        form = Ex007Form(request.POST)                                          #chama o forms para a var form
 
-        if form.is_valid():
-            id_produto = form.cleaned_data['id_produto']
-            nome_produto = form.cleaned_data['nome_produto']
-            qnt_produto = form.cleaned_data['qnt_produto']
+        if form.is_valid():                                                     #se esse forms existir
+            id_produto = form.cleaned_data['id_produto']                        #extrai o valor do campo 'id_produto' do formulario apos a validacao e armazena em id_produto
+            nome_produto = form.cleaned_data['nome_produto']                    #extrai o valor do campo 'nome_produto' do forms apos a validacao e armazena em nome_produto
+            qnt_produto = form.cleaned_data['qnt_produto']                      #extrai o valor do campo 'qnt_produto' do forms apos a validacao e armazena em qnt_produto
 
-            compras[id_produto] = {'nome': nome_produto, 'qnt': qnt_produto}
+            compras[id_produto] = {'nome': nome_produto, 'qnt': qnt_produto}    #cria um registro na estrutura de dados compras usando o id_produto 
+                                                                                #como chave e um dicionário contendo 'nome' e 'qnt' como valores associados 
+                                                                                #a essa chave
 
-    else:
-        form = Ex007Form()
+
+
+    else:                                                                       #se nao é post
+        form = Ex007Form()                                                      #instancia o forms com os dados iniciais
     
-    context = {
+    context = {                                                                 #armazena dados que serão passados para o template
     'lista_de_compras': compras, 
     'form': form   
     }
     
-    return render(request, 'robertinha/ex007.html', context )
+    return render(request, 'robertinha/ex007.html', context )                   #renderiza o template
 
 
 def ex007_add(request):
@@ -405,15 +409,18 @@ def ex007_add(request):
             nome_produto = form.cleaned_data['nome_produto']
             qnt_produto = form.cleaned_data['qnt_produto']
 
-            proximo_id = str(len(compras) + 1)
+            proximo_id = str(len(compras) + 1)                                  #Calcula o próximo ID para o novo registro, adicionando 1 ao 
+                                                                                #comprimento atual da estrutura de dados compras
 
-            compras[proximo_id] = {'nome': nome_produto, 'qnt': qnt_produto}
+            compras[proximo_id] = {'nome': nome_produto, 'qnt': qnt_produto}    #adiciona um novo item à lista de compras
 
-            return redirect('robertinha:ex007')
+            return redirect('robertinha:ex007')                                 #redireciona o usuário para a view 'ex007' após a 
+                                                                                #adição bem-sucedida do item à lista de compras
 
     else:
         proximo_id = str(len(compras) + 1)
-        form = Ex007Form(initial={'id_produto': proximo_id})
+        form = Ex007Form(initial={'id_produto': proximo_id})                    #exibir um valor preenchido no campo ID do produto no 
+                                                                                #formulário quando a página é acessada pela primeira vez
 
     return render(request, 'robertinha/ex007_add.html', {'form': form})
 
@@ -421,7 +428,6 @@ def ex007_add(request):
 
 def ex007_remove(request, id_produto):
     if request.method == 'POST':
-        if id_produto in compras:
-            print (compras[id_produto])
-            del compras[id_produto]
+        if id_produto in compras:                                               #verifica se o id_produto existe na estrutura de dados compras
+            del compras[id_produto]                                             #deleta do dic compras o id_produto que o user seleciona
     return redirect('robertinha:ex007')
