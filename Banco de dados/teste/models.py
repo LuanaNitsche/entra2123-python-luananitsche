@@ -6,7 +6,6 @@ class Pessoa(models.Model):
     idade = models.IntegerField(blank=True)
     email = models.EmailField(blank =True, default="", null=True)
     cpf = models.CharField(max_length=11, blank=True)
-    rg = models.CharField(max_length=11, blank=True)
     date_added = models.DateTimeField(auto_now=True)
     
     ESTADO_CIVIL_CHOICES = [
